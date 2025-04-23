@@ -20,4 +20,14 @@ export default () => ({
   frontend: {
     url: process.env.FRONTEND_URL || 'http://localhost:3000',
   },
+  github: {
+    clientId: process.env.GITHUB_CLIENT_ID,
+    clientSecret: process.env.GITHUB_CLIENT_SECRET,
+    callbackUrl: process.env.GITHUB_CALLBACK_URL,
+  },
+  apple: {
+    clientId: process.env.APPLE_CLIENT_ID,
+    clientSecret: process.env.APPLE_CLIENT_SECRET,
+    callbackUrl: process.env.APPLE_CALLBACK_URL,
+  },
 });

@@ -36,13 +36,17 @@ export class AppleStrategy extends PassportStrategy(Strategy, 'apple') {
     accessToken: string,
     refreshToken: string,
     idToken: string,
-    profile: any,
-    done: Function,
-  ): Promise<any> {
+    profile: Record<string, any>,
+    done: (error: any, user?: any) => void
+  ): Promise<void> {
     try {
       // Apple doesn't always send profile info (only on first login)
       // So we need to decode the idToken to get user info
-      const decodedToken: any = jwt.decode(idToken);
+      interface DecodedAppleToken {
+        sub: string;
+        email: string;
+      }
+      const decodedToken = jwt.decode(idToken) as DecodedAppleToken;
 
       // Initial user object with email
       const user = {

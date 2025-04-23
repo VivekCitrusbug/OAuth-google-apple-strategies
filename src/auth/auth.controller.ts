@@ -43,4 +43,17 @@ export class AuthController {
   appleAuthCallback(@Req() req: Request, @Res() res: Response) {
     return res.send(`login successfully., ${JSON.stringify(req.user)}`);
   }
+
+  // GitHub auth routes
+  @Get('github')
+  @UseGuards(AuthGuard('github'))
+  githubAuth() {
+    // This route initiates the GitHub OAuth flow
+  }
+
+  @Get('github/callback')
+  @UseGuards(AuthGuard('github'))
+  githubAuthCallback(@Req() req: Request, @Res() res: Response) {
+    return res.send(`login successfully., ${JSON.stringify(req.user)}`);
+  }
 }
