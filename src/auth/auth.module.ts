@@ -8,6 +8,7 @@ import { AuthService } from './auth.service';
 import { GitHubStrategy } from './strategies/github.strategies';
 import { GoogleStrategy } from './strategies/google.strategies';
 import { JwtStrategy } from './strategies/jwt.strategies';
+import { TwitterStrategy } from './strategies/twitter.strategies';
 @Module({
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt' }),
@@ -24,7 +25,13 @@ import { JwtStrategy } from './strategies/jwt.strategies';
     UsersModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, GoogleStrategy, JwtStrategy, GitHubStrategy],
+  providers: [
+    AuthService,
+    GoogleStrategy,
+    JwtStrategy,
+    GitHubStrategy,
+    TwitterStrategy,
+  ],
   exports: [AuthService],
 })
 export class AuthModule {}

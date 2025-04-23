@@ -56,4 +56,17 @@ export class AuthController {
   githubAuthCallback(@Req() req: Request, @Res() res: Response) {
     return res.send(`login successfully., ${JSON.stringify(req.user)}`);
   }
+
+  // Twitter auth routes
+  @Get('twitter')
+  @UseGuards(AuthGuard('twitter'))
+  twitterAuth() {
+    // This route initiates the Twitter OAuth flow
+  }
+
+  @Get('twitter/callback')
+  @UseGuards(AuthGuard('twitter'))
+  twitterAuthCallback(@Req() req: Request, @Res() res: Response) {
+    return res.send(`login successfully., ${JSON.stringify(req.user)}`);
+  }
 }
